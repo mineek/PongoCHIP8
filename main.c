@@ -121,8 +121,8 @@ void redraw_screen(chip8_t *self, chip8_event_t event) {
 	const uint8_t flip = device->home_button_at_right;
 	const uint32_t yOffset = (gHeight - (CHIP8_SCREEN_WIDTH * scale)) / 2;
 	const uint32_t xOffset = (gWidth - (CHIP8_SCREEN_HEIGHT * scale)) / 2;
-	for (uint32_t y=event.redraw_event.y; y<event.redraw_event.y + event.redraw_event.height; y++) {
-		for (uint32_t x=event.redraw_event.x; x<event.redraw_event.x + event.redraw_event.width; x++) {
+	for (uint32_t y = 0; y < CHIP8_SCREEN_HEIGHT; y++) {
+		for (uint32_t x = 0; x < CHIP8_SCREEN_WIDTH; x++) {
 			uint32_t rx = x % CHIP8_SCREEN_WIDTH;
 			uint32_t ry = y % CHIP8_SCREEN_HEIGHT;
 			uint32_t tx = (flip ? rx : (CHIP8_SCREEN_WIDTH - rx - 1));
